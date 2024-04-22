@@ -40,12 +40,14 @@ void	ft_calculate_and_launch(t_list *ptr)
 						* ptr->z_im + ptr->c_real;
 				else
 				{
-					double abs_z_real = fabs(ptr->z_real);
-    				double abs_z_im = fabs(ptr->z_im);
-    				ptr->z_real = (abs_z_real + abs_z_im) * (abs_z_real + abs_z_im) + ptr->c_real;
-					ptr->z_im = 2 * abs_z_real * abs_z_im + ptr->c_im;
+					ptr->z_real = fabs(ptr->z_real);
+    				ptr->z_im = fabs(ptr->z_im);
+					ptr->temp = 2 * ptr->z_real * ptr->z_im + ptr->c_im;
+    				ptr->z_real = ptr->z_real * ptr->z_real - ptr->z_im * ptr->z_im + ptr->c_real;
+					ptr->z_im = ptr->temp;
 				}
-				ptr->z_im = 2 * ptr->z_im * ptr->temp + ptr->c_im;
+				if(ptr->fractal_name != 3)
+					ptr->z_im = 2 * ptr->z_im * ptr->temp + ptr->c_im;
 				ptr->iteration++;
 			}
 			ft_draw_pixels(ptr->x, ptr->y,
