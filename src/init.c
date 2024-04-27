@@ -9,8 +9,6 @@ int	ft_check_fractal_name(t_list *ptr, char **argv, int argc)
 		ptr->fractal_name = 2;
 		validating_julia_parameters(argc, argv, ptr);
 	}
-	else if (!ft_strncmp("burningship", argv[1], 11))
-		ptr->fractal_name = 3;
 	else
 		return (0);
 	ft_settings(ptr);
@@ -57,7 +55,7 @@ void	ft_settings(t_list *ptr)
 void	ft_init(t_list *ptr)
 {
 	ptr->iteration = 0;
-	if (ptr->fractal_name == 1 || ptr->fractal_name == 3)
+	if (ptr->fractal_name == 1)
 	{
 		ptr->c_real = ptr->x / ptr->zoom_x + ptr->x_min;
 		ptr->c_im = ptr->y / ptr->zoom_y + ptr->y_min;
@@ -82,7 +80,6 @@ int	ft_init_hooks_and_loop(t_list *ptr)
 		perror("");
 	ft_put_image_to_window(ptr);
 	mlx_hook(ptr->mlx_win, 17, 0, destroy_fractol, ptr);
-	mlx_hook(ptr->mlx_win, 2, 1L << 0, key_hook, ptr);
 	mlx_mouse_hook(ptr->mlx_win, zoom_hook, ptr);
 	mlx_loop(ptr->mlx_ptr);
 	return (0);

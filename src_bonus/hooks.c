@@ -29,6 +29,8 @@ int	key_hook(int keysym, t_list *ptr)
 {
 	if (keysym == XK_Escape)
 		destroy_fractol(ptr);
+	if (keysym == XK_c)
+		ptr->color = 0xFA0CF0C;
 	if (keysym == XK_f)
 		ptr->color = ptr->color + 0xF0A0F0;
 	if (keysym == XK_Up || keysym == XK_w)
@@ -39,31 +41,6 @@ int	key_hook(int keysym, t_list *ptr)
 		ptr->x_min = ptr->x_min - ptr->display_shift;
 	if (keysym == XK_Right || keysym == XK_d)
 		ptr->x_min = ptr->x_min + ptr->display_shift;
-	ft_put_image_to_window(ptr);
-	return (0);
-}
-
-int	key_hook_zoom(int keysym, t_list *ptr)
-{
-	double	tmp_x;
-	double	tmp_y;
-
-	tmp_x = ptr->x / ptr->zoom_x + ptr->x_min;
-	tmp_y = ptr->y / ptr->zoom_y + ptr->y_min;
-	if (keysym == XK_z)
-	{
-		ptr->zoom_x *= 1.1;
-		ptr->zoom_y *= 1.1;
-		ptr->display_shift /= 1.1;
-	}
-	if (keysym == XK_x)
-	{
-		ptr->zoom_x /= 1.1;
-		ptr->zoom_y /= 1.1;
-		ptr->display_shift *= 1.1;
-	}
-	ptr->x_min = tmp_x - (ptr->x / ptr->zoom_x);
-	ptr->y_min = tmp_y - (ptr->y / ptr->zoom_y);
 	ft_put_image_to_window(ptr);
 	return (0);
 }

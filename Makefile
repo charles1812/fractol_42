@@ -35,6 +35,8 @@ bonus :			$(OBJS_BONUS)
 
 all:			$(NAME)
 
+all_bonus:		$(OBJ_BONUS) 
+
 clean:
 				make -sC ./minilibx-linux clean
 				$(RM) $(OBJS)
@@ -51,4 +53,4 @@ fclean_bonus:	clean_bonus
 
 re:				fclean all
 
-re_bonus:		fclean_bonus all
+re_bonus:		fclean_bonus all_bonus
