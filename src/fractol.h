@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jmilesi <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/08 08:05:11 by jmilesi           #+#    #+#             */
-/*   Updated: 2023/12/08 08:30:59 by jmilesi          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
@@ -30,7 +18,7 @@ typedef struct s_img
 	int		line_length;
 	int		bits_per_pixel;
 	int		endian;
-}t_img;
+}	t_img;
 
 typedef struct s_list
 {
@@ -53,7 +41,7 @@ typedef struct s_list
 	double	z_real;
 	double	z_im;
 	double	abs_z_real;
-    double	abs_z_im;
+	double	abs_z_im;
 	double	c_real;
 	double	c_im;
 	double	iteration;
@@ -63,36 +51,19 @@ typedef struct s_list
 	t_img	*img;
 }				t_list;
 
-int				main(int argc, char **argv);
-int				ft_check_fractal_name(t_list *ptr, char **argv, int argc);
-
-void			ft_init_each_fractal_settings(t_list *ptr);
-void			ft_launch_each_fractal(t_list *ptr);
-
-int				ft_init_mlx(t_list *ptr);
-void			ft_draw_pixels(int x, int y, int color, t_list *ptr);
-int				ft_put_image_to_window(t_list *ptr);
-
-void			destroy_fractol(t_list *ptr);
-
-
-void			ft_settings(t_list *ptr);
-void			ft_init(t_list *ptr);
-void			ft_calculate_and_launch(t_list *ptr);
-
-
-
-void			validating_julia_parameters(int argc, char *argv[],
+	int				ft_check_fractal_name(t_list *ptr, char **argv, int argc);
+	int				ft_put_image_to_window(t_list *ptr);
+	int				ft_zoom_hook(int keysym, int x, int y, t_list *ptr);
+	int				ft_init_hooks_and_loop(t_list *ptr);
+	int				ft_isdigit(int c);
+	int				ft_strncmp(const char *s1, const char *s2, size_t n);
+	double			ft_atod(char *s);
+	void			ft_draw_pixels(int x, int y, int color, t_list *ptr);
+	void			destroy_fractol(t_list *ptr);
+	void			ft_settings(t_list *ptr);
+	void			ft_init(t_list *ptr);
+	void			ft_calculate_and_launch(t_list *ptr);
+	void			validating_julia_parameters(int argc, char *argv[],
 					t_list *ptr);
-
-int				key_hook(int keysym, t_list *ptr);
-
-int				zoom_hook(int keysym, int x, int y, t_list *ptr);
-
-int				ft_init_hooks_and_loop(t_list *ptr);
-
-int				ft_isdigit(int c);
-double			ft_atod(char *s);
-int				ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif

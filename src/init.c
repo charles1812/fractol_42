@@ -80,7 +80,7 @@ int	ft_init_hooks_and_loop(t_list *ptr)
 		perror("");
 	ft_put_image_to_window(ptr);
 	mlx_hook(ptr->mlx_win, 17, 0, destroy_fractol, ptr);
-	mlx_mouse_hook(ptr->mlx_win, zoom_hook, ptr);
+	mlx_mouse_hook(ptr->mlx_win, ft_zoom_hook, ptr);
 	mlx_loop(ptr->mlx_ptr);
 	return (0);
 }

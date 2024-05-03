@@ -1,32 +1,32 @@
 #include "fractol.h"
 
-int     zoom_hook(int keysym, int x, int y, t_list *ptr)
+int	ft_zoom_hook(int keysym, int x, int y, t_list *ptr)
 {
-    double tmp_x;
-    double tmp_y;
-    double center_x;
-    double center_y;
-     
-    center_x = ptr->window_width / 2.0;
-    center_y = ptr->window_height / 2.0;
-    tmp_x = center_x / ptr->zoom_x + ptr->x_min;
-    tmp_y = center_y / ptr->zoom_y + ptr->y_min;
-    if (keysym == Button4)
-    {
-        ptr->zoom_x *= 1.1;
-        ptr->zoom_y *= 1.1;
-        ptr->display_shift /= 1.1;
-    }
-    if (keysym == Button5)
-    {
-        ptr->zoom_x /= 1.1;
-        ptr->zoom_y /= 1.1;
-        ptr->display_shift *= 1.1;
-    }
-    ptr->x_min = tmp_x - (center_x / ptr->zoom_x);
-    ptr->y_min = tmp_y - (center_y / ptr->zoom_y);
-    ft_put_image_to_window(ptr);
-    return (0);
+	double	tmp_x;
+	double	tmp_y;
+	double	center_x;
+	double	center_y;
+
+	center_x = ptr->window_width / 2.0;
+	center_y = ptr->window_height / 2.0;
+	tmp_x = center_x / ptr->zoom_x + ptr->x_min;
+	tmp_y = center_y / ptr->zoom_y + ptr->y_min;
+	if (keysym == Button4)
+	{
+		ptr->zoom_x *= 1.1;
+		ptr->zoom_y *= 1.1;
+		ptr->display_shift /= 1.1;
+	}
+	if (keysym == Button5)
+	{
+		ptr->zoom_x /= 1.1;
+		ptr->zoom_y /= 1.1;
+		ptr->display_shift *= 1.1;
+	}
+	ptr->x_min = tmp_x - (center_x / ptr->zoom_x);
+	ptr->y_min = tmp_y - (center_y / ptr->zoom_y);
+	ft_put_image_to_window(ptr);
+	return (0);
 }
 
 void	ft_draw_pixels(int x, int y, int color, t_list *ptr)
