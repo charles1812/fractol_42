@@ -1,24 +1,16 @@
-#include "fractol.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cspreafi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/06 11:00:20 by cspreafi          #+#    #+#             */
+/*   Updated: 2024/05/06 11:00:26 by cspreafi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int	ft_put_image_to_window(t_list *ptr)
-{
-	if (ptr->img->mlx_img)
-		mlx_destroy_image(ptr->mlx_ptr, ptr->img->mlx_img);
-	ptr->img->mlx_img = mlx_new_image(ptr->mlx_ptr,
-			ptr->window_width, ptr->window_height);
-	if (!(ptr->img->mlx_img))
-		perror("");
-	ptr->img->data = mlx_get_data_addr(ptr->img->mlx_img,
-			&ptr->img->bits_per_pixel, &ptr->img->line_length,
-			&ptr->img->endian);
-	if (!(ptr->img->data))
-		perror("");
-	ptr->x = 0;
-	ft_calculate_and_launch(ptr);
-	mlx_put_image_to_window(ptr->mlx_ptr,
-		ptr->mlx_win, ptr->img->mlx_img, 0, 0);
-	return (0);
-}
+#include "fractol.h"
 
 void	ft_calculate_and_launch(t_list *ptr)
 {
@@ -49,6 +41,26 @@ void	ft_calculate_and_launch(t_list *ptr)
 	}
 }
 
+int	ft_put_image_to_window(t_list *ptr)
+{
+	if (ptr->img->mlx_img)
+		mlx_destroy_image(ptr->mlx_ptr, ptr->img->mlx_img);
+	ptr->img->mlx_img = mlx_new_image(ptr->mlx_ptr,
+			ptr->window_width, ptr->window_height);
+	if (!(ptr->img->mlx_img))
+		perror("");
+	ptr->img->data = mlx_get_data_addr(ptr->img->mlx_img,
+			&ptr->img->bits_per_pixel, &ptr->img->line_length,
+			&ptr->img->endian);
+	if (!(ptr->img->data))
+		perror("");
+	ptr->x = 0;
+	ft_calculate_and_launch(ptr);
+	mlx_put_image_to_window(ptr->mlx_ptr,
+		ptr->mlx_win, ptr->img->mlx_img, 0, 0);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_list	*ptr;
@@ -61,7 +73,6 @@ int	main(int argc, char **argv)
 		perror("");
 	ptr->window_width = 600;
 	ptr->window_height = 600;
-	ptr->display_shift = 0.1;
 	if (argc < 2 || argc > 4 || ft_check_fractal_name(ptr, argv, argc) != 1)
 	{
 		write(1, "Please enter the name of the fractal you want to see:\n", 55);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cspreafi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/06 11:00:20 by cspreafi          #+#    #+#             */
+/*   Updated: 2024/05/06 11:00:26 by cspreafi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 int	ft_put_image_to_window(t_list *ptr)
@@ -80,7 +92,7 @@ int	main(int argc, char **argv)
 	if (argc < 2 || argc > 4 || ft_check_fractal_name(ptr, argv, argc) != 1)
 	{
 		write(1, "Please enter the name of the fractal you want to see:\n", 55);
-		write(1, "mandelbrot\njulia 'real part' 'imaginary part'", 46);
+		write(1, "mandelbrot\njulia\nburningship 'x_real' 'y_imaginary'", 46);
 		exit(0);
 	}
 	else
