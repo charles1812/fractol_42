@@ -31,7 +31,7 @@ int	ft_check_fractal_name(t_list *ptr, char **argv, int argc)
 
 void	validating_julia_parameters(int argc, char *argv[], t_list *ptr)
 {
-	if (argc == 4)
+	if (argc == 4 && ft_check(argv) == 1)
 	{
 		ptr->c_real = ft_atod(argv[2]);
 		ptr->c_im = ft_atod(argv[3]);

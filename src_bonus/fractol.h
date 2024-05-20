@@ -62,6 +62,7 @@ typedef struct s_list
 	t_img	*img;
 }				t_list;
 
+int				ft_check(char **argv);
 int				ft_check_fractal_name(t_list *ptr, char **argv, int argc);
 int				ft_put_image_to_window(t_list *ptr);
 int				key_hook(int keysym, t_list *ptr);

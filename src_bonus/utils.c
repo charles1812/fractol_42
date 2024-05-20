@@ -12,6 +12,32 @@
 
 #include "fractol.h"
 
+
+int	ft_check(char **argv)
+{
+	int	i;
+
+	i = 0;
+	if(argv[2][i] == '-' || argv[2][i] == '+')
+		i++;
+	while (argv[2][i])
+	{
+		if (ft_isdigit(argv[2][i]) == 0 && argv[2][i] != '.')
+			return (0);
+		i++;
+	}
+	i = 0;
+	if(argv[3][i] == '-' || argv[3][i] == '+')
+		i++;
+	while (argv[3][i])
+	{
+		if (ft_isdigit(argv[3][i]) == 0 && argv[3][i] != '.')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 double	ft_atod(char *s)
 {
 	double	nb;
