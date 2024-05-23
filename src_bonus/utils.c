@@ -12,13 +12,12 @@
 
 #include "fractol.h"
 
-
 int	ft_check(char **argv)
 {
 	int	i;
 
 	i = 0;
-	if(argv[2][i] == '-' || argv[2][i] == '+')
+	if (argv[2][i] == '-' || argv[2][i] == '+')
 		i++;
 	while (argv[2][i])
 	{
@@ -27,7 +26,7 @@ int	ft_check(char **argv)
 		i++;
 	}
 	i = 0;
-	if(argv[3][i] == '-' || argv[3][i] == '+')
+	if (argv[3][i] == '-' || argv[3][i] == '+')
 		i++;
 	while (argv[3][i])
 	{
